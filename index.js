@@ -154,15 +154,20 @@ bot.action('mine', async ctx => {
   menu(ctx)
 })
 
-// === ARRANQUE DEFINITIVO (FIX FINAL) ===
-bot.launch({
-  dropPendingUpdates: true,
-  allowedUpdates: []  // evita errores de polling
-}).then(() => {
-  console.log('STANKING MINER 100% ACTIVO, VERIFICADO Y COBRANDO 24/7 – SIN CONFLICTOS')
-}).catch(err => {
-  console.error('ERROR DE CONEXIÓN TELEGRAM:', err.message)
-})
+// === ARRANQUE CON TIMEOUT FORZADO (FIX RAILWAY) ===
+setTimeout(() => {
+  console.log('FORZANDO CONEXIÓN A TELEGRAM...')
+  bot.launch({
+    dropPendingUpdates: true,
+    allowedUpdates: []
+  }).then(() => {
+    console.log('STANKING MINER 100% ACTIVO, VERIFICADO Y COBRANDO 24/7 – SIN CONFLICTOS')
+  }).catch(err => {
+    console.error('ERROR CONEXIÓN TELEGRAM:', err.message)
+    process.exit(1)
+  })
+}, 3000) // fuerza el launch después de 3 segundos
 
 process.once('SIGINT', () => bot.stop('SIGINT'))
 process.once('SIGTERM', () => bot.stop('SIGTERM'))
+

@@ -77,9 +77,9 @@ const buildKeyboard = (rows) => ({
 const mainMenu = (ctx) =>
   sendMessage(
     ctx,
-    '*STAKING MINER*\nPagos reales • Min retiro 1 USDT',
+    `<b>STAKING MINER</b>\nPagos reales - Min retiro 1 USDT`,
     {
-      parse_mode: 'Markdown',
+      parse_mode: 'HTML',
       reply_markup: {
         inline_keyboard: [
           [
@@ -95,7 +95,7 @@ const mainMenu = (ctx) =>
         ]
       }
     }
-  )// ==== /start ====
+  )/ ==== /start ====
 bot.start(async (ctx) => {
   const id = ctx.from.id.toString()
   const ref = ctx.message?.text?.split(' ')[1] || null

@@ -408,6 +408,7 @@ bot.action('menu_retiro', async (ctx) => {
 })
 
 // ==== MENÚ: REFERIDOS ====
+
 bot.action('menu_referidos', async (ctx) => {
   const id = ctx.from.id.toString()
   const u = users[id]
@@ -416,12 +417,12 @@ bot.action('menu_referidos', async (ctx) => {
   const link = `https://t.me/${me.username}?start=${id}`
 
   await ctx.editMessageText(
-    `<b>👥 Tus referidos</b>\n
-Total: <b>${u.referidos}</b>\n
-Activos: <b>${u.refValidos}</b>\n
-\n<b>Tu link:</b>\n<code>${link}</code>`,
+    `👥 *Tus referidos*\n
+Total: *${u.referidos}*\n
+Activos: *${u.refValidos}*\n
+\n*Tu link de invitación:*\n${link}`,
     {
-      parse_mode: "HTML",
+      parse_mode: "Markdown",
       reply_markup: {
         inline_keyboard: [
           [{ text: "⬅️ Regresar", callback_data: "back_main" }]

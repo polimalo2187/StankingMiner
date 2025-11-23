@@ -95,7 +95,7 @@ const mainMenu = (ctx) =>
         ]
       }
     }
-  )/ ==== /start ====
+    })
 bot.start(async (ctx) => {
   const id = ctx.from.id.toString()
   const ref = ctx.message?.text?.split(' ')[1] || null

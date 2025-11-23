@@ -132,41 +132,37 @@ const mainMenu = (ctx) => {
       }
     }
   )
-                                 }
-  // ================== /start ==================
+
+  
+// ================== /start ==================
 bot.start(async (ctx) => {
-  const id = ctx.from.id.toString()
-  const text = ctx.message?.text || ''
-  const parts = text.split(' ')
-  const ref = parts[1] || null
+    const id = ctx.from.id.toString()
+    const text = ctx.message?.text || ''
+    const parts = text.split(' ')
+    const ref = parts[1] || null
 
-  let u = getUser(id)
+    let u = getUser(id)
 
-  // Si viene con referido y no tiene invitador aún
-  if (ref && !u.inviter && ref !== id && users[ref]) {
-    u.inviter = ref
-    users[ref].referidos += 1
-    users[ref].balance += 0.02
+    // Si viene con referido y no tiene invitador aún
+    if (ref && !u.inviter && ref !== id && users[ref]) {
+        u.inviter = ref
+        users[ref].referidos += 1
+        users[ref].balance += 0.02
+
+        saveDB()
+
+        bot.telegram.sendMessage(
+            ref,
+            `Nuevo referido registrado: <b>${ctx.from.first_name}</b>`,
+            { parse_mode: "HTML" }
+        ).catch(() => {})
+    }
 
     saveDB()
-    bot.telegram
-      .sendMessage(ref, 'Nuevo referido registrado: +0.02 USDT')
-      .catch(() => {})
-  }
 
-  // Si aún no está verificado
-  if (!u.verified) {
-    return sendMessage(
-      ctx,
-      `VERIFICACIÓN\n\nEscribe este código para activar el bot:\n<code>${u.code}</code>`,
-      { parse_mode: 'HTML' }
-    )
-  }
-
-  // Si ya está verificado
-  return mainMenu(ctx)
+    return mainMenu(ctx)
 })
-
+  
 
 // ================== HANDLER DE TEXTO ==================
 bot.on('text', async (ctx) => {

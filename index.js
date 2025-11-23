@@ -74,8 +74,8 @@ const buildKeyboard = (rows) => ({
 })
 
 // ==== MENÚ PRINCIPAL ====
-const mainMenu = (ctx) =>
-  sendMessage(
+const mainMenu = (ctx) => {
+  return sendMessage(
     ctx,
     `<b>STAKING MINER</b>\nPagos reales - Min retiro 1 USDT`,
     {
@@ -95,10 +95,10 @@ const mainMenu = (ctx) =>
         ]
       }
     }
-    }
-  });
-  
-// ==== /start ====
+  )
+};
+
+ // ==== /start ====
 bot.start(async (ctx) => {
   const id = ctx.from.id.toString()
   const ref = ctx.message?.text?.split(' ')[1] || null

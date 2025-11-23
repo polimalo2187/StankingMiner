@@ -409,18 +409,25 @@ bot.action('menu_retiro', async (ctx) => {
 
 // ==== MENÚ: REFERIDOS ====
 bot.action('menu_referidos', async (ctx) => {
-  await ctx.answerCbQuery()
-
   const id = ctx.from.id.toString()
   const u = users[id]
-
   const me = await bot.telegram.getMe()
+
   const link = `https://t.me/${me.username}?start=${id}`
 
-  return sendMessage(
-    ctx,
-    `👥 *REFERIDOS*\n\nTotales: ${u?.referidos || 0}\nVálidos (invirtieron): ${u?.refValidos || 0}\n\nTu link:\n${link}`,
-    { parse_mode: 'Markdown' }
+  await ctx.editMessageText(
+    `<b>👥 Tus referidos</b>\n
+Total: <b>${u.referidos}</b>\n
+Activos: <b>${u.refValidos}</b>\n
+\n<b>Tu link:</b>\n<code>${link}</code>`,
+    {
+      parse_mode: "HTML",
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: "⬅️ Regresar", callback_data: "back_main" }]
+        ]
+      }
+    }
   )
 })
 

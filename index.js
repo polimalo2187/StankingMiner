@@ -295,27 +295,54 @@ bot.action('menu_principal', async (ctx) => {
 
 // ==== MENÚ: STAKING ====
 bot.action('menu_staking', async (ctx) => {
-  await ctx.answerCbQuery()
+    await ctx.answerCbQuery()
 
-  const rows = [
-    [
-      { text: '1 USDT', callback_data: 'select_plan_1' },
-      { text: '3 USDT', callback_data: 'select_plan_3' },
-      { text: '5 USDT', callback_data: 'select_plan_5' }
-    ],
-    [
-      { text: '10 USDT', callback_data: 'select_plan_10' },
-      { text: '20 USDT', callback_data: 'select_plan_20' },
-      { text: '50 USDT', callback_data: 'select_plan_50' }
+    const rows = [
+        [
+            { text: '1 USDT', callback_data: 'select_plan_1' },
+            { text: '3 USDT', callback_data: 'select_plan_3' },
+            { text: '5 USDT', callback_data: 'select_plan_5' }
+        ],
+        [
+            { text: '10 USDT', callback_data: 'select_plan_10' },
+            { text: '20 USDT', callback_data: 'select_plan_20' },
+            { text: '50 USDT', callback_data: 'select_plan_50' }
+        ]
     ]
-  ]
 
-  return sendMessage(
-    ctx,
-    'Selecciona un plan de staking (10% diario por 20 días):',
-    { reply_markup: buildKeyboard(rows) }
-  )
+    return sendMessage(
+        ctx,
+        'Selecciona un plan de staking (10% diario por 24 horas):',
+        { reply_markup: buildKeyboard(rows) }
+    )
 })
+
+// ==== SELECCIÓN DE PLAN ====
+bot.action(/select_plan_(.+)/, async (ctx) => {
+    await ctx.answerCbQuery()
+
+    const id = ctx.from.id.toString()
+    const u = users[id]
+    const amount = parseFloat(ctx.match[1])  // extrae 1, 3, 5, 10, 20, 50
+
+    if (!amount) {
+        return sendMessage(ctx, 'Error al seleccionar el plan.')
+    }
+
+    // Guardar plan pendiente
+    u.pendingDeposit = amount
+    saveDB()
+
+    return sendMessage(
+        ctx,
+        `<b>Has seleccionado el plan de ${amount} USDT.</b>\n\n` +
+        `Para activarlo, envía exactamente <b>${amount} USDT</b> a la siguiente dirección:\n\n` +
+        `<code>${process.env.WALLET_RECEPTOR}</code>\n\n` +
+        `Una vez que llegue el pago, la minería se activará automáticamente.`,
+        { parse_mode: 'HTML' }
+    )
+})
+
 
 // ==== MENÚ: MINERÍA ====
 bot.action('menu_mineria', async (ctx) => {

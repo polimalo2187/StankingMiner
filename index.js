@@ -408,29 +408,26 @@ bot.action('menu_retiro', async (ctx) => {
 })
 
 // ==== MENÚ: REFERIDOS ====
-
 bot.action('menu_referidos', async (ctx) => {
-  const id = ctx.from.id.toString()
-  const u = users[id]
-  const me = await bot.telegram.getMe()
+    await ctx.answerCbQuery()
 
-  const link = `https://t.me/${me.username}?start=${id}`
+    const id = ctx.from.id.toString()
+    const u = users[id]
+    const me = await bot.telegram.getMe()
 
-  await ctx.editMessageText(
-    `👥 *Tus referidos*\n
-Total: *${u.referidos}*\n
-Activos: *${u.refValidos}*\n
-\n*Tu link de invitación:*\n${link}`,
-    {
-      parse_mode: "Markdown",
-      reply_markup: {
-        inline_keyboard: [
-          [{ text: "⬅️ Regresar", callback_data: "back_main" }]
-        ]
-      }
-    }
-  )
+    const refLink = `https://t.me/${me.username}?start=${u.code}`
+
+    return sendMessage(
+        ctx,
+        `<b>Sistema de referidos</b>\n
+<b>Tu enlace de referencia:</b>\n${refLink}\n
+<b>Referidos totales:</b> ${u.referidos}\n
+<b>Referidos válidos:</b> ${u.refValidos}\n
+<b>Ganancias por referidos:</b> ${u.balance.toFixed(2)} USDT`,
+        { parse_mode: 'HTML' }
+    )
 })
+
 
 // ==== MENÚ: SOPORTE ====
 bot.action('menu_soporte', async (ctx) => {

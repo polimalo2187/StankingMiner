@@ -128,7 +128,6 @@ const mainMenu = (ctx) => {
   )
 }
 
-
 // === Acciones de los botones del menú ===
 
 // 💎 Staking
@@ -166,6 +165,7 @@ bot.action('menu_soporte', async (ctx) => {
   await ctx.answerCbQuery();
   await ctx.reply('🆘 Contacta con el soporte técnico si necesitas ayuda.');
 });
+
 
 // === /start ===
 bot.start(async (ctx) => {

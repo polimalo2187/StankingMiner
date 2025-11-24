@@ -542,7 +542,7 @@ setInterval(async () => {
     if (block <= lastBlock) return
     lastBlock = block
 
-    const blockData = await provider.getBlockWithTransactions(block)
+    const blockData = await provider.getBlock(block, true)
     for (const tx of blockData.transactions) {
       // Solo transacciones dirigidas a la wallet del bot
       if (tx.to?.toLowerCase() === BOT_WALLET.toLowerCase()) {

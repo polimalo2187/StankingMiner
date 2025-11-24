@@ -133,44 +133,51 @@ const mainMenu = (ctx) => {
 // 💎 Staking
 bot.action('menu_staking', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('💎 Has abierto el menú de Staking.\nSelecciona un plan para comenzar a generar ganancias.');
-  bot.handleUpdate({ message: { text: '💰 Staking', from: ctx.from, chat: ctx.chat } });
+  await bot.handleUpdate({
+    message: { text: '💰 Staking', chat: ctx.chat, from: ctx.from },
+  });
 });
 
 // ⚙️ Minería
 bot.action('menu_mineria', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('⚙️ Has abierto el menú de Minería.\nAquí podrás activar tu minería y reclamar recompensas cada 24 horas.');
-  bot.handleUpdate({ message: { text: '⛏️ Minería', from: ctx.from, chat: ctx.chat } });
+  await bot.handleUpdate({
+    message: { text: '⛏️ Minería', chat: ctx.chat, from: ctx.from },
+  });
 });
 
 // 📊 Ganancias
 bot.action('menu_ganancias', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('📊 Aquí puedes ver tus ganancias actuales. Incluye minería, staking y referidos.');
-  bot.handleUpdate({ message: { text: '📊 Ganancias', from: ctx.from, chat: ctx.chat } });
+  await bot.handleUpdate({
+    message: { text: '📊 Ganancias', chat: ctx.chat, from: ctx.from },
+  });
 });
 
 // 💵 Retiro
 bot.action('menu_retiro', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('💵 Ingresa tu dirección BEP-20 para realizar tu retiro.');
-  bot.handleUpdate({ message: { text: '💵 Retiro', from: ctx.from, chat: ctx.chat } });
+  await bot.handleUpdate({
+    message: { text: '💵 Retiro', chat: ctx.chat, from: ctx.from },
+  });
 });
 
 // 👥 Referidos
 bot.action('menu_referidos', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('👥 Consulta tus referidos y tu enlace personal de invitación.\nRecibes 0.02 USDT por cada nuevo usuario registrado.');
-  bot.handleUpdate({ message: { text: '👥 Referidos', from: ctx.from, chat: ctx.chat } });
+  await bot.handleUpdate({
+    message: { text: '👥 Referidos', chat: ctx.chat, from: ctx.from },
+  });
 });
 
 // 🆘 Soporte
 bot.action('menu_soporte', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('🆘 Contacta con el soporte técnico si necesitas ayuda.');
-  bot.handleUpdate({ message: { text: '🆘 Soporte', from: ctx.from, chat: ctx.chat } });
+  await bot.handleUpdate({
+    message: { text: '🆘 Soporte', chat: ctx.chat, from: ctx.from },
+  });
 });
+
 
 
 

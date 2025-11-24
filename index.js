@@ -146,7 +146,28 @@ bot.start(async (ctx) => {
       ).catch(() => {})
     }
   } else {
-    return mainMenu(ctx)
+  await ctx.reply(
+    "<b>STAKING MINER</b>\nPagos reales – Mínimo retiro 1 USDT 💰",
+    {
+      parse_mode: "HTML",
+      reply_markup: {
+        inline_keyboard: [
+          [
+            { text: "💎 Staking", callback_data: "menu_staking" },
+            { text: "⚙️ Minería", callback_data: "menu_mineria" },
+            { text: "📈 Ganancias", callback_data: "menu_ganancias" }
+          ],
+          [
+            { text: "💰 Retiro", callback_data: "menu_retiro" },
+            { text: "👥 Referidos", callback_data: "menu_referidos" },
+            { text: "🛠️ Soporte", callback_data: "menu_soporte" }
+          ]
+        ]
+      }
+    }
+  );
+
+  return mainMenu(ctx);
   }
 })
 

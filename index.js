@@ -305,30 +305,30 @@ bot.action('menu_staking', async (ctx) => {
 })
 
 
-// ================== SELECCIÓN DEL PLAN ==================
+// ============= SELECCIÓN DEL PLAN =============
 bot.action(/select_plan_(\d+)/, async (ctx) => {
-  await ctx.answerCbQuery().catch(() => {})
+    await ctx.answerCbQuery().catch(() => {})
 
-  const id = ctx.from.id.toString()
-  const amount = Number(ctx.match[1])
-  const u = getUser(id)
+    const id = ctx.from.id.toString()
+    const amount = Number(ctx.match[1])
+    const u = getUser(id)
 
-  if (![1, 3, 5, 10, 20, 50].includes(amount)) {
-    return sendMessage(ctx, 'Plan inválido.')
-  }
+    if (![1, 3, 5, 10, 20, 50].includes(amount)) {
+        return ctx.reply('❌ Plan inválido.')
+    }
 
-  // Guardamos temporalmente el plan y pasamos a pedir wallet
-  ctx.session.pendingStake = { amount, step: 'await_wallet' }
+    // Guardamos la selección para depósito
+    u.pendingDeposit = amount
+    saveDB()
 
-  return sendMessage(
-    ctx,
-    `<b>Has elegido el plan de ${amount} USDT.</b>\n` +
-      `Ganancia diaria: <b>${(amount * 0.1).toFixed(6)} USDT</b>\n` +
-      `Duración: 20 días.\n\n` +
-      `Ahora envía la <b>wallet BEP20</b> desde la que harás el depósito.`,
-    { parse_mode: 'HTML' }
-  )
+    return sendMessage(
+        ctx,
+        `Has seleccionado el plan de *${amount} USDT*.\n\n` +
+        `Ahora realiza el depósito para activar tu plan.`,
+        { parse_mode: 'Markdown' }
+    )
 })
+  
       // ================== MENÚ: MINERÍA ==================
 bot.action('menu_mineria', async (ctx) => {
   await ctx.answerCbQuery().catch(() => {})

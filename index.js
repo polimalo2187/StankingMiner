@@ -228,17 +228,18 @@ bot.on('text', async (ctx) => {
     delete u.code
     saveDB()
     await ctx.reply('✅ Verificación completada correctamente.')
-    return mainMenu(ctx)
+    return mainMenu(ctx) // <- muestra los botones inmediatamente
   }
 
   // Si no está verificado, recordarle su código
   if (!u.verified) {
     return ctx.reply(
-      `⚠️ Escribe el código que te envié para verificar tu cuenta.\nTu código es: <code>${u.code}</code>`,
+      `⚠️ Escribe el código que te envié para verificar tu cuenta.`,
       { parse_mode: 'HTML' }
     )
   }
 })
+
     // ===============================
 // 💰 BLOQUE 3/10 — GANANCIAS, RETIRO Y SOPORTE
 // ===============================

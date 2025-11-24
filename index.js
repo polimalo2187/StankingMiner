@@ -100,17 +100,34 @@ function formatUSDT(value) {
 // 🧠 BLOQUE 2/10 — INICIO Y MENÚ
 // ===============================
 
+// === Teclado principal (botones del menú) ===
+const mainKeyboard = {
+  inline_keyboard: [
+    [
+      { text: "💎 Staking", callback_data: "menu_staking" },
+      { text: "⚙️ Minería", callback_data: "menu_mineria" },
+      { text: "📊 Ganancias", callback_data: "menu_ganancias" },
+    ],
+    [
+      { text: "💵 Retiro", callback_data: "menu_retiro" },
+      { text: "👥 Referidos", callback_data: "menu_referidos" },
+      { text: "🆘 Soporte", callback_data: "menu_soporte" },
+    ],
+  ],
+}
+
 // === Función para mostrar menú principal ===
 const mainMenu = (ctx) => {
   return sendMessage(
     ctx,
-    '<b>STAKING MINER</b>\nPagos reales – Mínimo retiro 1 USDT',
+    '<b>STAKING MINER</b>\nPagos reales – Mínimo retiro 1 USDT.',
     {
       parse_mode: 'HTML',
       reply_markup: mainKeyboard
     }
   )
 }
+
 
 // ===============================
 // ⚡ ACCIONES DE LOS BOTONES DEL MENÚ PRINCIPAL

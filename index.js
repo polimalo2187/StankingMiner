@@ -133,38 +133,39 @@ const mainMenu = (ctx) => {
 // 💎 Staking
 bot.action('menu_staking', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('💎 Has abierto el menú de Staking.\n\nSelecciona un plan para comenzar a generar ganancias.');
+  return bot.emit('text', { message: { text: '💰 Staking' }, from: ctx.from, chat: ctx.chat });
 });
 
 // ⚙️ Minería
 bot.action('menu_mineria', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('⚙️ Has abierto el menú de Minería.\n\nAquí podrás activar tu minería y reclamar recompensas cada 24 horas.');
+  return bot.emit('text', { message: { text: '⛏️ Minería' }, from: ctx.from, chat: ctx.chat });
 });
 
 // 📊 Ganancias
 bot.action('menu_ganancias', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('📊 Aquí puedes ver tus ganancias actuales.\nIncluye minería, staking y referidos.');
+  return bot.emit('text', { message: { text: '📊 Ganancias' }, from: ctx.from, chat: ctx.chat });
 });
 
 // 💵 Retiro
 bot.action('menu_retiro', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('💵 Ingresa tu dirección BEP-20 para realizar tu retiro.');
+  return bot.emit('text', { message: { text: '💵 Retiro' }, from: ctx.from, chat: ctx.chat });
 });
 
 // 👥 Referidos
 bot.action('menu_referidos', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('👥 Consulta tus referidos y tu enlace personal de invitación.\nRecibes 0.02 USDT por cada nuevo usuario registrado.');
+  return bot.emit('text', { message: { text: '👥 Referidos' }, from: ctx.from, chat: ctx.chat });
 });
 
 // 🆘 Soporte
 bot.action('menu_soporte', async (ctx) => {
   await ctx.answerCbQuery();
-  await ctx.reply('🆘 Contacta con el soporte técnico si necesitas ayuda.');
+  return bot.emit('text', { message: { text: '🆘 Soporte' }, from: ctx.from, chat: ctx.chat });
 });
+
 
 
 // === /start ===

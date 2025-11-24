@@ -129,56 +129,43 @@ const mainMenu = (ctx) => {
 }
 
 
-// ===============================
-// ⚡ ACCIONES DE LOS BOTONES DEL MENÚ PRINCIPAL
-// ===============================
+// === Acciones de los botones del menú ===
 
-// 💎 STAKING
-bot.action("menu_staking", async (ctx) => {
+// 💎 Staking
+bot.action('menu_staking', async (ctx) => {
   await ctx.answerCbQuery();
-  return ctx.reply("💎 Has abierto el menú de *Staking*.\n\nSelecciona un plan para comenzar a generar ganancias.", {
-    parse_mode: "Markdown",
-  });
+  await ctx.reply('💎 Has abierto el menú de Staking.\n\nSelecciona un plan para comenzar a generar ganancias.');
 });
 
-// ⚙️ MINERÍA
-bot.action("menu_mineria", async (ctx) => {
+// ⚙️ Minería
+bot.action('menu_mineria', async (ctx) => {
   await ctx.answerCbQuery();
-  return ctx.reply("⚙️ Has abierto el menú de *Minería*.\n\nAquí podrás activar tu minería y reclamar recompensas cada 24 horas.", {
-    parse_mode: "Markdown",
-  });
+  await ctx.reply('⚙️ Has abierto el menú de Minería.\n\nAquí podrás activar tu minería y reclamar recompensas cada 24 horas.');
 });
 
-// 📊 GANANCIAS
-bot.action("menu_ganancias", async (ctx) => {
+// 📊 Ganancias
+bot.action('menu_ganancias', async (ctx) => {
   await ctx.answerCbQuery();
-  return ctx.reply("📊 Aquí puedes ver tus *ganancias actuales*.\nIncluye minería, staking y referidos.", {
-    parse_mode: "Markdown",
-  });
+  await ctx.reply('📊 Aquí puedes ver tus ganancias actuales.\nIncluye minería, staking y referidos.');
 });
 
-// 💵 RETIRO
-bot.action("menu_retiro", async (ctx) => {
+// 💵 Retiro
+bot.action('menu_retiro', async (ctx) => {
   await ctx.answerCbQuery();
-  return ctx.reply("💵 Ingresa tu dirección *BEP-20* para realizar el retiro.\nEl mínimo es *1 USDT*.", {
-    parse_mode: "Markdown",
-  });
+  await ctx.reply('💵 Ingresa tu dirección BEP-20 para realizar tu retiro.');
 });
 
-// 👥 REFERIDOS
-bot.action("menu_referidos", async (ctx) => {
+// 👥 Referidos
+bot.action('menu_referidos', async (ctx) => {
   await ctx.answerCbQuery();
-  return ctx.reply("👥 Consulta tus *referidos* y tu *enlace personal de invitación*.\nRecibes *0.02 USDT* por cada nuevo usuario registrado.", {
-    parse_mode: "Markdown",
-  });
+  await ctx.reply('👥 Consulta tus referidos y tu enlace personal de invitación.\nRecibes 0.02 USDT por cada nuevo usuario registrado.');
 });
 
-// 🆘 SOPORTE
-bot.action("menu_soporte", async (ctx) => {
+// 🆘 Soporte
+bot.action('menu_soporte', async (ctx) => {
   await ctx.answerCbQuery();
-  return ctx.reply("🆘 Si necesitas ayuda, contacta con el soporte oficial:\n👉 @Soporte_STMiner", {
-    parse_mode: "Markdown",
-  });
+  await ctx.reply('🆘 Contacta con el soporte técnico si necesitas ayuda.');
+});
 });
 
 // === /start ===

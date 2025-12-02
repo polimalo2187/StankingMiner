@@ -1,0 +1,13 @@
+{
+  "name": "stminer-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.61.0",
+    "@supabase/supabase-js": "^2.39.3",
+    "dotenv": "^16.4.5",
+    "web3": "^4.3.0",
+    "axios": "^1.6.8"
+  }
+}

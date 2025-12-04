@@ -12,7 +12,7 @@ import referrals from './handlers/referrals.js';
 import support from './handlers/support.js';
 import verifyTx from './handlers/verifyTx.js';
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 
 // Handlers
 start(bot);

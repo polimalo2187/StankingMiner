@@ -1,5 +1,5 @@
 import { Markup } from "telegraf";
-import { supabase } from "../../supabase.js";
+import { supabase } from "../supabase.js";
 
 const MIN_RETIRO = 1; // mínimo de retiro en USDT
 

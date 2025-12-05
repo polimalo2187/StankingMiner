@@ -1,5 +1,5 @@
 import { Markup } from "telegraf";
-import { supabase } from "../../supabase.js";
+import { supabase } from "../supabase.js";
 
 export default function gainsHandler(bot) {
 

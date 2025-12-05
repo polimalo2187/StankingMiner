@@ -1,20 +1,17 @@
 import { createClient } from "@supabase/supabase-js";
-import dotenv from "dotenv";
-dotenv.config();
 
-// Validación de variables (opcional pero útil)
-if (!process.env.SUPABASE_URL) {
-  throw new Error("❌ ERROR: Falta SUPABASE_URL en variables de entorno.");
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+
+// Validaciones
+if (!SUPABASE_URL) {
+    throw new Error("❌ ERROR: Falta SUPABASE_URL en variables de entorno.");
 }
 
-if (!process.env.SUPABASE_KEY) {
-  throw new Error("❌ ERROR: Falta SUPABASE_KEY en variables de entorno.");
+if (!SUPABASE_ANON_KEY) {
+    throw new Error("❌ ERROR: Falta SUPABASE_ANON_KEY en variables de entorno.");
 }
 
-// Crear cliente Supabase
-export const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY
-);
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 console.log("📦 Supabase conectado correctamente");

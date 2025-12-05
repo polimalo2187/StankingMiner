@@ -1,5 +1,5 @@
 import { Markup } from "telegraf";
-import { supabase } from "../../supabase.js";
+import { supabase } from "../supabase.js";
 
 const MIN_VALID_REFERRALS = 5;
 const MINING_REWARD = 0.02;

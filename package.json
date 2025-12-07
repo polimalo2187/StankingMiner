@@ -9,6 +9,7 @@
   "dependencies": {
     "telegraf": "^4.15.0",
     "@supabase/supabase-js": "^2.39.6",
-    "dotenv": "^16.4.1"
+    "dotenv": "^16.4.1",
+    "axios": "^1.6.8"
   }
 }

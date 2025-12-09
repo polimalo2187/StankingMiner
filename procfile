@@ -1,1 +1,1 @@
-worker: node src/server.js --no-warnings
+web: node src/server.js --no-warnings

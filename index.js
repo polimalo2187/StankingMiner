@@ -1188,3 +1188,39 @@ bot.hears(/\/rechazar_(\d+)/, async (ctx) => {
         { parse_mode: "Markdown" }
     );
 });[ Markup.button.callback("💸 Retiros", "admin_withdraws") ],
+);
+    });
+
+    // Botón para volver al panel admin
+    await ctx.reply(
+        "🔙 Volver al panel de administración",
+        {
+            parse_mode: "Markdown",
+            ...Markup.inlineKeyboard([
+                [Markup.button.callback("💸 Retiros", "admin_withdraws")]
+            ])
+        }
+    );
+});
+
+// ==========================================
+//  MENU PRINCIPAL (callback "menu")
+// ==========================================
+
+bot.action("menu", (ctx) => {
+    mostrarMenu(ctx);
+});
+
+// ==========================================
+//  WEBHOOK / LONG-POLLING
+// ==========================================
+
+if (WEBHOOK_URL) {
+    bot.telegram.setWebhook(WEBHOOK_URL);
+} else {
+    bot.launch();
+}
+
+// Previene que el bot se cierre en Railway
+process.once("SIGINT", () => bot.stop("SIGINT"));
+process.once("SIGTERM", () => bot.stop("SIGTERM"));

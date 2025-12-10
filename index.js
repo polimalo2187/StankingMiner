@@ -774,8 +774,6 @@ setInterval(async () => {
 //               PANEL DEL ADMINISTRADOR
 // =====================================================
 
-// ID del administrador (TU TELEGRAM ID)
-const ADMIN_ID = 2010460041;
 
 // Comando /admin (solo tú puedes usarlo)
 bot.command("admin", async (ctx) => {
